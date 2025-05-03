@@ -1,2 +1,2 @@
 # DNS_version_scanner
-异步扫描DNS版本信息
+多线程扫描DNS版本信息
