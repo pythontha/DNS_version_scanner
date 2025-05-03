@@ -93,7 +93,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	// 初始化进度条（网页1、网页6、网页7推荐方案）
+	// 初始化进度条
 	bar := pb.New(len(servers))
 	bar.SetTemplateString(`{{counters . }} {{bar . "[" "=" ">" "-" "]"}} {{percent .}} ({{speed .}}/s)`)
 	bar.Start()
@@ -112,7 +112,7 @@ func main() {
 	const workerNum = 20
 	var (
 		wg      sync.WaitGroup
-		counter int64 // 原子计数器（网页3、网页4并发方案）
+		counter int64 // 原子计数器
 	)
 
 	jobs := make(chan string, 100)
@@ -138,7 +138,7 @@ func main() {
 		}
 	}()
 
-	// 进度更新协程（网页6推荐方案）
+	// 进度更新协程
 	go func() {
 		ticker := time.NewTicker(100 * time.Millisecond)
 		defer ticker.Stop()
